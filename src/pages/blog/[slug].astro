@@ -1,27 +1,31 @@
 ---
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import fs from 'fs';
-import { MDX } from '@astrojs/mdx/runtime';
 
 const { params } = Astro;
 const slug = params.slug;
-let content = '';
-try {
-  content = fs.readFileSync(new URL(`../../src/content/posts/${slug}.mdx`, import.meta.url), 'utf-8');
-} catch (e) {
-  content = '# Not Found\nPost not found.';
+
+// Eagerly import MDX modules at build-time and render the matching post.
+const modules = import.meta.glob('../../content/posts/*.mdx', { eager: true });
+const key = Object.keys(modules).find(k => k.endsWith(`/${slug}.mdx`));
+const mod = key ? modules[key] : null;
+if (!mod) {
+  throw new Error('Post not found');
 }
+const Content = mod.default;
+const frontmatter = mod.frontmatter || {};
 ---
 <html lang="en">
   <head>
-    <title>{slug} — MySite</title>
+    <title>{frontmatter.title ?? slug} — MySite</title>
   </head>
   <body>
     <Nav />
     <main class="container py-12">
       <article class="prose">
-        <MDX content={content} />
+        <h1 class="text-2xl font-bold">{frontmatter.title ?? slug}</h1>
+        {frontmatter.date && <p class="muted">{frontmatter.date}</p>}
+        <Content />
       </article>
     </main>
     <Footer />
