@@ -2,6 +2,16 @@
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 
+// Generate static paths for all MDX posts
+export async function getStaticPaths() {
+  const modules = import.meta.glob('../../content/posts/*.mdx', { eager: true });
+  return Object.keys(modules).map(filePath => {
+    const file = filePath.split('/').pop();
+    const slug = file.replace(/\.mdx$/, '');
+    return { params: { slug } };
+  });
+}
+
 const { params } = Astro;
 const slug = params.slug;
 
