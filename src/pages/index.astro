@@ -9,15 +9,35 @@ import SEO from '../components/SEO.astro';
     <Nav />
 
     <main class="container py-12">
-      <h1 class="text-3xl font-bold">Hi — I help students pursue higher education abroad</h1>
-      <p class="mt-4 text-slate-700">I offer personalised consultation for admissions, scholarships, and pre-departure guidance. I also write step-by-step self-hosting guides and publish tech videos on YouTube.</p>
+      <section class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold">I help students pursue higher education abroad</h1>
+          <p class="mt-4 muted">Personalised consultancy for admissions, scholarships, SOP review, and pre-departure guidance. I also publish step-by-step self-hosting guides and tech videos.</p>
 
-      <section class="mt-8">
-        <h2 class="text-2xl font-semibold">Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          <a href="/services" class="block p-4 border rounded">Consultation Services</a>
-          <a href="/blog" class="block p-4 border rounded">Tech Blog</a>
-          <a href="/contact" class="block p-4 border rounded">Contact Me</a>
+          <div class="mt-6 flex gap-3">
+            <a href="/services" class="px-4 py-2 bg-primary-500 text-white rounded">Get Consultation</a>
+            <a href="/blog" class="px-4 py-2 border rounded">Read the Blog</a>
+          </div>
+
+          <div class="mt-8 card">
+            <h3 class="font-semibold">Featured Post</h3>
+            <p class="mt-2 muted">Step-by-step Self-hosting: Small Home Server — practical guide for a low-cost home server.</p>
+            <a class="inline-block mt-3 text-primary-500" href="/blog/01-self-hosting">Read →</a>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center">
+          <div class="w-full max-w-md">
+            <!-- Simple illustrative SVG hero -->
+            <svg viewBox="0 0 600 400" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="illustration">
+              <rect x="0" y="0" width="600" height="400" rx="16" fill="#eef2ff" />
+              <g transform="translate(80,60)">
+                <rect width="160" height="120" rx="8" fill="#fff" stroke="#c7d2fe" />
+                <rect x="190" y="10" width="240" height="100" rx="8" fill="#fff" stroke="#bae6fd" />
+                <circle cx="40" cy="160" r="28" fill="#06b6d4" />
+              </g>
+            </svg>
+          </div>
         </div>
       </section>
     </main>
