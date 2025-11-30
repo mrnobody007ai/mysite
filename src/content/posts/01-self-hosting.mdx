@@ -1,0 +1,54 @@
+---
+title: "Step-by-step Self-hosting: Small Home Server"
+date: 2025-11-30
+description: "A practical guide to self-hosting a small home server for web apps and media."
+---
+
+## Overview
+
+This tutorial walks through setting up a small self-hosted server: hardware choices, OS installation (Ubuntu Server), configuring SSH, a basic firewall, and deploying a simple static site.
+
+### 1. Hardware and Network
+
+- Use a low-power mini PC or Raspberry Pi 4 for small projects.
+- Ensure your router supports port forwarding or use a reverse proxy/tunnel (Cloudflare Tunnel / Tailscale) if no static IP.
+
+### 2. Install OS
+
+Install Ubuntu Server LTS, enable SSH, and update packages:
+
+```bash
+sudo apt update; sudo apt upgrade -y
+```
+
+### 3. Create a user, enable SSH key auth, disable password auth
+
+```bash
+adduser youruser
+mkdir -p /home/youruser/.ssh
+chmod 700 /home/youruser/.ssh
+echo "<your-public-key>" > /home/youruser/.ssh/authorized_keys
+chmod 600 /home/youruser/.ssh/authorized_keys
+chown -R youruser:youruser /home/youruser/.ssh
+```
+
+### 4. Firewall (ufw)
+
+```bash
+sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+```
+
+### 5. Reverse proxy and TLS
+
+Use Caddy or Nginx + Certbot for TLS. Caddy is easy for automatic TLS.
+
+### 6. Deploy your site
+
+Copy files via `scp` or use git to pull code to the server. Serve static sites via Nginx or a simple file server.
+
+---
+
+This is a short sample — expand each step with screenshots and exact commands when writing your full post.

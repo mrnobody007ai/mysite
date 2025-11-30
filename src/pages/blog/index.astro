@@ -1,0 +1,39 @@
+---
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import SEO from '../../components/SEO.astro';
+import fs from 'fs';
+
+const postsDir = new URL('../../src/content/posts/', import.meta.url);
+let posts = [];
+try {
+  posts = fs.readdirSync(postsDir).filter(f => f.endsWith('.mdx'))
+    .map(filename => {
+      const slug = filename.replace(/\.mdx$/, '');
+      const raw = fs.readFileSync(new URL(filename, postsDir), 'utf-8');
+      const titleMatch = raw.match(/title:\s*\"([^\"]+)\"/);
+      return { slug, title: titleMatch ? titleMatch[1] : slug };
+    });
+} catch (e) {
+  // ignore
+}
+---
+<html lang="en">
+  <SEO title="Blog — MySite" description="Tech and self-hosting guides." />
+  <body>
+    <Nav />
+    <main class="container py-12">
+      <h1 class="text-2xl font-bold">Blog</h1>
+      <p class="mt-3 text-slate-700">Step-by-step self-hosting tutorials, YouTube writeups, and tech notes.</p>
+
+      <ul class="mt-6 space-y-3">
+        {posts.map(post => (
+          <li>
+            <a class="text-lg text-blue-600" href={`/blog/${post.slug}`}>{post.title}</a>
+          </li>
+        ))}
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>

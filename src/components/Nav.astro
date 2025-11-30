@@ -1,0 +1,15 @@
+---
+const { current = '' } = Astro.props;
+---
+<nav class="bg-white border-b">
+  <div class="container flex items-center justify-between h-16">
+    <a href="/" class="font-semibold text-xl">MySite</a>
+    <ul class="flex gap-4">
+      <li><a href="/" class="text-sm">Home</a></li>
+      <li><a href="/services" class="text-sm">Services</a></li>
+      <li><a href="/blog" class="text-sm">Blog</a></li>
+      <li><a href="/about" class="text-sm">About</a></li>
+      <li><a href="/contact" class="text-sm">Contact</a></li>
+    </ul>
+  </div>
+</nav>

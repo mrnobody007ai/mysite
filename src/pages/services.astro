@@ -1,0 +1,24 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import SEO from '../components/SEO.astro';
+---
+<html lang="en">
+  <SEO title="Services — MySite" description="Consultation services for higher education abroad." />
+  <body>
+    <Nav />
+    <main class="container py-12">
+      <h1 class="text-2xl font-bold">Consultation Services</h1>
+      <p class="mt-4 text-slate-700">I provide 1:1 consultancy for international study, scholarship search, SOP review, and pre-departure support.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <ServiceCard title="Program & University Selection" description="Personalised shortlisting based on profile and goals." />
+        <ServiceCard title="Application Review" description="Document review, SOP feedback, and interview prep." />
+        <ServiceCard title="Scholarship Guidance" description="Find and apply for scholarships and funding." />
+        <ServiceCard title="Pre-departure Support" description="Visa guidance, housing tips, and arrival checklist." />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

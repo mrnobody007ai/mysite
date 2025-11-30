@@ -1,0 +1,32 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+---
+<html lang="en">
+  <SEO title="Contact — MySite" description="Get in touch for consultation or collaborations." />
+  <body>
+    <Nav />
+    <main class="container py-12">
+      <h1 class="text-2xl font-bold">Contact</h1>
+      <p class="mt-3 text-slate-700">Use the form below to reach out. This posts to Formspree — replace the `action` with your Formspree endpoint.</p>
+
+      <form class="mt-6 max-w-lg" method="POST" action="https://formspree.io/f/your-form-id">
+        <label class="block">
+          <span class="text-sm">Name</span>
+          <input type="text" name="name" class="mt-1 block w-full border rounded p-2" required />
+        </label>
+        <label class="block mt-3">
+          <span class="text-sm">Email</span>
+          <input type="email" name="email" class="mt-1 block w-full border rounded p-2" required />
+        </label>
+        <label class="block mt-3">
+          <span class="text-sm">Message</span>
+          <textarea name="message" rows="5" class="mt-1 block w-full border rounded p-2" required></textarea>
+        </label>
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Send</button>
+      </form>
+    </main>
+    <Footer />
+  </body>
+</html>

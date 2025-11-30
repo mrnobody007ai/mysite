@@ -1,0 +1,27 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+---
+<html lang="en">
+  <SEO title="Home — MySite" description="Higher education consultancy from Bangladesh. Self-hosting tutorials and tech YouTube content." />
+  <body>
+    <Nav />
+
+    <main class="container py-12">
+      <h1 class="text-3xl font-bold">Hi — I help students pursue higher education abroad</h1>
+      <p class="mt-4 text-slate-700">I offer personalised consultation for admissions, scholarships, and pre-departure guidance. I also write step-by-step self-hosting guides and publish tech videos on YouTube.</p>
+
+      <section class="mt-8">
+        <h2 class="text-2xl font-semibold">Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <a href="/services" class="block p-4 border rounded">Consultation Services</a>
+          <a href="/blog" class="block p-4 border rounded">Tech Blog</a>
+          <a href="/contact" class="block p-4 border rounded">Contact Me</a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
